@@ -1,0 +1,17 @@
+name: Reusable workflow
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      tmin:
+        required: true
+        type: number
+  
+jobs:
+  example_job:
+    name: Generate output
+    runs-on: ubuntu-latest
+    steps:
+    - timeout-minutes: ${{ inputs.tmin }}
+      run: echo "hello"
