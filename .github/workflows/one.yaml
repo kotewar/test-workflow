@@ -1,17 +1,16 @@
 name: Reusable workflow
 
-
 on:
   workflow_dispatch:
     inputs:
       tmin:
+        type: number  
         required: true
-        type: number
-  
+        
 jobs:
   example_job:
     name: Generate output
     runs-on: ubuntu-latest
     steps:
-    - timeout-minutes: ${{ inputs.tmin }}
+    - timeout-minutes: ${{fromJSON(inputs.tmin)}}
       run: echo "hello"
